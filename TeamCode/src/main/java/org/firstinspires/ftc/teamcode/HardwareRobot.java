@@ -14,7 +14,7 @@ public class HardwareRobot {
     public DcMotor rightFrontDrive = null;
     public DcMotor leftRearDrive = null;
     public DcMotor rightRearDrive = null;
-    public DcMotor arm = null;
+    public DcMotor lift = null;
     public DcMotor spinner = null;
     public CRServo leftintake = null;
     public CRServo rightintake = null;
@@ -36,11 +36,11 @@ public class HardwareRobot {
         rightFrontDrive = hwMap.get(DcMotor.class, "motor_front_right");
         leftRearDrive = hwMap.get(DcMotor.class, "motor_rear_left");
         rightRearDrive = hwMap.get(DcMotor.class, "motor_rear_right");
-        arm = hwMap.get(DcMotor.class, "motor_arm");
-        spinner = hwMap.get(DcMotor.class, "motor_spinner");
+       lift = hwMap.get(DcMotor.class, "motor_lift");
+        //spinner = hwMap.get(DcMotor.class, "motor_spinner");
        
-       leftintake = hwMap.get(CRServo.class, "left_intake");
-       rightintake = hwMap.get(CRServo.class, "right_intake");
+       //leftintake = hwMap.get(CRServo.class, "left_intake");
+      // rightintake = hwMap.get(CRServo.class, "right_intake");
         //grabber = hwMap.get(Servo.class, "servo_grabber");
         
         leftFrontDrive.setDirection(DcMotor.Direction.REVERSE);
@@ -48,17 +48,17 @@ public class HardwareRobot {
         leftRearDrive.setDirection(DcMotor.Direction.REVERSE);
         rightRearDrive.setDirection(DcMotor.Direction.FORWARD);
         
-        arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
               
        
         leftFrontDrive.setPower(0);
         rightFrontDrive.setPower(0);
         leftRearDrive.setPower(0);
         rightRearDrive.setPower(0);
-        spinner.setPower(0);
+       // spinner.setPower(0);
         //grabber.setPosition(.45);
-        leftintake.setPower(0);
-        rightintake.setPower(0);
+        //leftintake.setPower(0);
+        //rightintake.setPower(0);
     }
 
 }
