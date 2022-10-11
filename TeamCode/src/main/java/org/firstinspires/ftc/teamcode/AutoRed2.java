@@ -792,24 +792,24 @@ public void lift(double power, double inches)
     
     if (opModeIsActive()) {
         
-        newLiftTarget = robot.arm.getCurrentPosition() + (int) (inches * (1140/(3.5 * 3.1415)));
+     //   newLiftTarget = robot.arm.getCurrentPosition() + (int) (inches * (1140/(3.5 * 3.1415)));
         
-        robot.arm.setTargetPosition(newLiftTarget);
+        //   robot.arm.setTargetPosition(newLiftTarget);
         
-        robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+      //  robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         
         runtime.reset();
-        robot.arm.setPower(Math.abs(power));
+     //   robot.arm.setPower(Math.abs(power));
         
-         while (opModeIsActive() &&
-                     robot.arm.isBusy()) {
-        telemetry.addData("Lift", "Running at %7d",
-                        robot.arm.getCurrentPosition());
-                telemetry.update();
+      //   while (opModeIsActive() &&
+       //              robot.arm.isBusy()) {
+    //    telemetry.addData("Lift", "Running at %7d",
+      //                  robot.arm.getCurrentPosition());
+    //            telemetry.update()));
         
     }
-    robot.arm.setPower(0);
-    robot.arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+  //  robot.arm.setPower(0);
+  //  robot.arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
    
 }
     
@@ -819,4 +819,3 @@ public void lift(double power, double inches)
 
 
    
-}

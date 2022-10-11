@@ -234,11 +234,11 @@ public class AutoRed1 extends LinearOpMode{
                          sleep(1000);
                         gyroStrafe (.3, 24, 199.5);
                          sleep(1000);
-                        robot.spinner.setPower(.3);
+                     //   robot.spinner.setPower(.3);
                         
                         sleep(4500);
                         
-                        robot.spinner.setPower(0);
+                     //   robot.spinner.setPower(0);
                         
                         
                         gyroStrafe(.3, -30, 180);
@@ -282,11 +282,11 @@ public class AutoRed1 extends LinearOpMode{
                          sleep(1000);
                         gyroStrafe (.3, 24, 199.5);
                          sleep(1000);
-                        robot.spinner.setPower(.3);
+                    //    robot.spinner.setPower(.3);
                         
                         sleep(4500);
                         
-                        robot.spinner.setPower(0);
+                   //     robot.spinner.setPower(0);
                         
                         
                         gyroStrafe(.3, -30, 180);
@@ -332,11 +332,11 @@ public class AutoRed1 extends LinearOpMode{
                          sleep(1000);
                         gyroStrafe (.3, 24, 199.5);
                          sleep(1000);
-                        robot.spinner.setPower(.3);
+                     //   robot.spinner.setPower(.3);
                         
                         sleep(4500);
                         
-                        robot.spinner.setPower(0);
+                    //    robot.spinner.setPower(0);
                         
                         
                         gyroStrafe(.3, -30, 180);
@@ -845,24 +845,24 @@ public void lift(double power, double inches)
     
     if (opModeIsActive()) {
         
-        newLiftTarget = robot.arm.getCurrentPosition() + (int) (inches * (1140/(3.5 * 3.1415)));
+     //   newLiftTarget = robot.arm.getCurrentPosition() + (int) (inches * (1140/(3.5 * 3.1415)));
         
-        robot.arm.setTargetPosition(newLiftTarget);
+      //  robot.arm.setTargetPosition(newLiftTarget);
         
-        robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+     //   robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         
         runtime.reset();
-        robot.arm.setPower(Math.abs(power));
+     //   robot.arm.setPower(Math.abs(power));
         
          while (opModeIsActive() &&
-                     robot.arm.isBusy()) {
-        telemetry.addData("Lift", "Running at %7d",
-                        robot.arm.getCurrentPosition());
-                telemetry.update();
+      //               robot.arm.isBusy()) {
+     //   telemetry.addData("Lift", "Running at %7d",
+     //                   robot.arm.getCurrentPosition());
+                telemetry.update());
         
     }
-    robot.arm.setPower(0);
-    robot.arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+  //  robot.arm.setPower(0);
+  //  robot.arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
    
 }
     
@@ -872,4 +872,4 @@ public void lift(double power, double inches)
 
 
    
-}
+

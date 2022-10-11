@@ -99,10 +99,10 @@ public void runOpMode() {
     robot.rightFrontDrive.setPower(front_right);
     robot.leftRearDrive.setPower(rear_left);
     robot.rightRearDrive.setPower(rear_right);
-    robot.arm.setPower(armPower);
-    robot.spinner.setPower(motorspinner);
-    robot.rightintake.setPower(servoRightPower);
-    robot.leftintake.setPower(servoLeftPower);
+   // robot.arm.setPower(armPower);
+   // robot.spinner.setPower(motorspinner);
+ //   robot.rightintake.setPower(servoRightPower);
+  //  robot.leftintake.setPower(servoLeftPower);
     
 }
 
