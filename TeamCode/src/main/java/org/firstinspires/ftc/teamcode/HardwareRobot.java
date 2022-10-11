@@ -16,6 +16,7 @@ public class HardwareRobot {
     public DcMotor rightRearDrive = null;
     public DcMotor lift = null;
     public DcMotor spinner = null;
+    public Servo grabber = null;
     public CRServo leftintake = null;
     public CRServo rightintake = null;
     
@@ -41,7 +42,7 @@ public class HardwareRobot {
        
        //leftintake = hwMap.get(CRServo.class, "left_intake");
       // rightintake = hwMap.get(CRServo.class, "right_intake");
-        //grabber = hwMap.get(Servo.class, "servo_grabber");
+        grabber = hwMap.get(Servo.class, "servo_grabber");
         
         leftFrontDrive.setDirection(DcMotor.Direction.REVERSE);
         rightFrontDrive.setDirection(DcMotor.Direction.FORWARD);
@@ -56,7 +57,7 @@ public class HardwareRobot {
         leftRearDrive.setPower(0);
         rightRearDrive.setPower(0);
        // spinner.setPower(0);
-        //grabber.setPosition(.45);
+        grabber.setPosition(0);
         //leftintake.setPower(0);
         //rightintake.setPower(0);
     }

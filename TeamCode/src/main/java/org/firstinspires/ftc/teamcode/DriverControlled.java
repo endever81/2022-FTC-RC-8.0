@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 public class DriverControlled extends LinearOpMode {
 
     HardwareRobot robot = new HardwareRobot();
-    
+
 @Override
 public void runOpMode() {
 
@@ -66,18 +66,14 @@ public void runOpMode() {
     }
    
    
-   double servoLeftPower = 0;
-   double servoRightPower = 0;
+
+
    
    if (gamepad2.a){
-    servoRightPower = -1;
-    servoLeftPower = 1;
+
     }
     
-    if (gamepad2.b){
-    servoRightPower = 1;
-    servoLeftPower = -1;
-    }
+
     
     
    double motorspinner = 0;
@@ -100,6 +96,7 @@ public void runOpMode() {
     robot.leftRearDrive.setPower(rear_left);
     robot.rightRearDrive.setPower(rear_right);
     robot.lift.setPower(liftPower);
+
     //robot.spinner.setPower(motorspinner);
    // robot.rightintake.setPower(servoRightPower);
    // robot.leftintake.setPower(servoLeftPower);
