@@ -67,15 +67,12 @@ public void runOpMode() {
    
    
 
-
+double grabberposition = .9;
    
    if (gamepad2.a){
-
+    grabberposition = 0;
     }
-    
 
-    
-    
    double motorspinner = 0;
    
  if (gamepad2.left_bumper){
@@ -96,7 +93,7 @@ public void runOpMode() {
     robot.leftRearDrive.setPower(rear_left);
     robot.rightRearDrive.setPower(rear_right);
     robot.lift.setPower(liftPower);
-
+    robot.grabber.setPosition(grabberposition);
     //robot.spinner.setPower(motorspinner);
    // robot.rightintake.setPower(servoRightPower);
    // robot.leftintake.setPower(servoLeftPower);
