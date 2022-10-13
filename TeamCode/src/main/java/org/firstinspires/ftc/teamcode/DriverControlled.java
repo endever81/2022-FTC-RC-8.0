@@ -67,10 +67,10 @@ public void runOpMode() {
    
    
 
-double grabberposition = .9;
+double grabberposition = 0;
    
    if (gamepad2.a){
-    grabberposition = 0;
+    grabberposition = .3;
     }
 
    double motorspinner = 0;

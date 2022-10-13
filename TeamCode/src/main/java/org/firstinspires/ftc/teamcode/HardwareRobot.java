@@ -57,7 +57,7 @@ public class HardwareRobot {
         leftRearDrive.setPower(0);
         rightRearDrive.setPower(0);
        // spinner.setPower(0);
-        grabber.setPosition(.9);
+        grabber.setPosition(.3);
         //leftintake.setPower(0);
         //rightintake.setPower(0);
     }
