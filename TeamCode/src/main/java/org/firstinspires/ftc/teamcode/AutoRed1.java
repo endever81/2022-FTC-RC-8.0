@@ -38,13 +38,11 @@ import org.firstinspires.ftc.robotcore.external.ClassFactory;
 
 public class AutoRed1 extends LinearOpMode{
 
-    private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
+    private static final String TFOD_MODEL_ASSET = "PowerPlay.tflite";
     private static final String[] LABELS = {
-      //"Ball",
-      //"Cube",
-      //"Duck",
-      //"Marker"
-      "Cap"
+            "1 Bolt",
+            "2 Bulb",
+            "3 Panel"
     };
 
     private static final String VUFORIA_KEY =
@@ -85,292 +83,242 @@ public class AutoRed1 extends LinearOpMode{
 
     @Override
     public void runOpMode() {
-       
-               
-     robot.init(hardwareMap);
 
-       
+
+        robot.init(hardwareMap);
+
+
         initVuforia();
         initTfod();
 
-   
+
         if (tfod != null) {
             tfod.activate();
 
-            tfod.setZoom(1.5, 25.0/9.0);
+            tfod.setZoom(1.5, 10.0 / 9.0);
         }
 
-     
-       
-       
+
         //IMU Initialization
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.mode = BNO055IMU.SensorMode.IMU;
         parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
         parameters.loggingEnabled = false;
-       
+
         imu = hardwareMap.get(BNO055IMU.class, "imu");
-        imu.initialize (parameters);
+        imu.initialize(parameters);
         //sensorDistance = hardwareMap.get(DistanceSensor.class, "left_distance_sensor");
         //sensorDistanceBack = hardwareMap.get(DistanceSensor.class, "back_distance");
-       
+
         telemetry.addData("Mode", "calibrating...");
         telemetry.update();
-       
+
         // make sure the imu gyro is calibrated before continuing.
-        while (!isStopRequested() && !imu.isGyroCalibrated())
-       
-        {
+        while (!isStopRequested() && !imu.isGyroCalibrated()) {
             sleep(50);
             idle();
         }
-            
-       
-        telemetry.addData("Wheel Encoders",  "Starting at %7d :%7d :%7d :%7d",
+
+
+        telemetry.addData("Wheel Encoders", "Starting at %7d :%7d :%7d :%7d",
                 robot.leftFrontDrive.getCurrentPosition(),
                 robot.rightFrontDrive.getCurrentPosition(),
                 robot.leftRearDrive.getCurrentPosition(),
                 robot.rightRearDrive.getCurrentPosition()
-                );
-               
-       
+        );
+
+
         telemetry.addData("Mode", "waiting for start");
-        telemetry.addData("imu calib status", imu.getCalibrationStatus().toString());      
+        telemetry.addData("imu calib status", imu.getCalibrationStatus().toString());
         angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
         telemetry.addData("Heading", angles.firstAngle);
         //telemetry.addData("Distance (cm)",String.format(Locale.US, "%.02f", sensorDistance.getDistance(DistanceUnit.CM)));
 
-     
-     
-     
-   
+
         telemetry.update();
-       
-       
-       
-       
-       
-       
-       
-       
+
+
         waitForStart();
-        
-        int w = 0;
-        double leftValue = 0;
-        boolean onLeft = true;
-        boolean seeDuck = false;
 
 
 //release pressure on the wheel
 //servoWobble.setPosition(.7);
 
+        int x = 0;
         if (opModeIsActive()) {
-          //  while (opModeIsActive()) {
-          if (tfod != null) {
-          while(w < 2){
-                //if (tfod != null) {
-                    // getUpdatedRecognitions() will return null if no new information is available since
-                    // the last time that call was made.
-                    List<Recognition> updatedRecognitions = tfod.getUpdatedRecognitions();
-                    if (updatedRecognitions != null) {
-                      telemetry.addData("# Object Detected", updatedRecognitions.size());
-                      // step through the list of recognitions and display boundary info.
-                      int i = 0;
-                      for (Recognition recognition : updatedRecognitions) {
+            //  while (opModeIsActive()) {
+            if (tfod != null) {
+
+                List<Recognition> updatedRecognitions = tfod.getUpdatedRecognitions();
+                if (updatedRecognitions != null) {
+                    telemetry.addData("# Object Detected", updatedRecognitions.size());
+                    // step through the list of recognitions and display boundary info.
+                    int i = 0;
+                    x = 0;
+                    for (Recognition recognition : updatedRecognitions) {
                         telemetry.addData(String.format("label (%d)", i), recognition.getLabel());
-                        telemetry.addData(String.format("  left,top (%d)", i), "%.03f , %.03f",
-                                recognition.getLeft(), recognition.getTop());
-                        telemetry.addData(String.format("  right,bottom (%d)", i), "%.03f , %.03f",
-                                recognition.getRight(), recognition.getBottom());
-                      
-                       if (recognition.getLabel() != "Duck")
-                                 { telemetry.addData(">", "I Do not See a Duck"); 
-                                    //duckPosition++;
-                                 }
-                        else
-                        {
-                            seeDuck = true;
-                            leftValue = recognition.getLeft();
-                            if (leftValue < 275)
-                            {
-                                //telemetry.addData(">", "Duck is on 1");
-                                onLeft = true;
-                            }
-                            else
-                            {
-                                //telemetry.addData(">", "Duck is on 2");
-                                onLeft = false;
-                            }
+
+
+                        if (recognition.getLabel() == "1 Bolt") {
+                            x = 1;
                         }
-                        i++;
-                        w++;
-                      }
-                      w++;
-                      telemetry.update();
+                        if (recognition.getLabel() == "2 Bulb") {
+                            x = 2;
+                        }
+                        if (recognition.getLabel() == "3 Panel") {
+                            x = 3;
+                        }
+
                     }
+
+
                 }
+                telemetry.update();
             }
-                
-                    
-                    
-                      
-                      if (seeDuck == true && onLeft == true)
-                      {
-                          telemetry.addData(">","Duck is on 1");
-                          telemetry.update();
-                          //duck is on left and place block on bottom
-                          
-                          //robot.grabber.setPosition(0);
-                        
-                        sleep(750);
-                        
-                        lift(.2, 5);
-                        
-                        
-                        gyroDrive (.3, 13, 0);
-                        sleep(1000);
-                        
-                        gyroTurn (.3, 199.5);
-                         sleep(1000);
-                        gyroStrafe (.3, 24, 199.5);
-                         sleep(1000);
-                     //   robot.spinner.setPower(.3);
-                        
-                        sleep(4500);
-                        
-                     //   robot.spinner.setPower(0);
-                        
-                        
-                        gyroStrafe(.3, -30, 180);
-                        
-                        gyroTurn(.3, -40);
-                        
-                        gyroDrive(.3, 18, -40);
-                        
-                        //robot.grabber.setPosition(.35);
-                        
-                        sleep(1000);
-                        
-                        gyroDrive(.5, -15, -40);
-                        
-                        gyroTurn(.3, -95);
-                        
-                       // gyroDrive (.4, 85, -95);
-                      }
-                        
-                        
-                        
-                        
-                        
-                        
-                      if (seeDuck == true && onLeft == false)
-                      {
-                          telemetry.addData(">","Duck is on 2");
-                          telemetry.update();
-                          //duck is on middle and place block on middle
-                           //robot.grabber.setPosition(0);
-                        
-                        sleep(750);
-                        
-                       
-                         lift(.2, 3);
-                        
-                        gyroDrive (.3, 13, 0);
-                        sleep(1000);
-                        
-                        gyroTurn (.3, 199.5);
-                         sleep(1000);
-                        gyroStrafe (.3, 24, 199.5);
-                         sleep(1000);
-                    //    robot.spinner.setPower(.3);
-                        
-                        sleep(4500);
-                        
-                   //     robot.spinner.setPower(0);
-                        
-                        
-                        gyroStrafe(.3, -30, 180);
-                        
-                        gyroTurn(.3, -40);
-                         lift(.2, 6);
-                        gyroDrive(.3, 18, -40);
-                        
-                        //robot.grabber.setPosition(.35);
-                        
-                        sleep(1000);
-                        
-                        gyroDrive(.5, -15, -40);
-                        
-                        gyroTurn(.3, -95);
-                        
-                       // gyroDrive (.4, 85, -95);
-                          
-                      }
-                      
-                      
-                      
-                      
-                      
-                      
-                      if (seeDuck == false)
-                      {
-                          telemetry.addData(">","Duck is on 3");
-                          telemetry.update();
-                          //duck is on right and place block on top
-                          
-                     //robot.grabber.setPosition(0);
-                        
-                        sleep(750);
-                        
-                        lift(.2, 3);
-                        
-                        
-                        gyroDrive (.3, 13, 0);
-                        sleep(1000);
-                        
-                        gyroTurn (.3, 199.5);
-                         sleep(1000);
-                        gyroStrafe (.3, 24, 199.5);
-                         sleep(1000);
-                     //   robot.spinner.setPower(.3);
-                        
-                        sleep(4500);
-                        
-                    //    robot.spinner.setPower(0);
-                        
-                        
-                        gyroStrafe(.3, -30, 180);
-                        
-                        gyroTurn(.3, -40);
-                         lift(.2, 9);
-                        gyroDrive(.3, 18, -40);
-                        
-                        //robot.grabber.setPosition(.35);
-                        
-                        sleep(1000);
-                        
-                        gyroDrive(.5, -15, -40);
-                        
-                        gyroTurn(.3, -95);
-                        
-                      //  gyroDrive (.4, 85, -95);
 
-                    
-                    
-                    
-                      }
-                      
-                      
-                      
-                      
-                      
-                      
         }
 
-        if (tfod != null) {
-            tfod.shutdown();
+
+        if (x == 1) {
+            telemetry.addData(">", "Left");
+            telemetry.update();
+            //duck is on left and place block on bottom
+
+            //robot.grabber.setPosition(0);
+/*
+            sleep(750);
+
+            lift(.2, 5);
+
+
+            gyroDrive(.3, 13, 0);
+            sleep(1000);
+
+            gyroTurn(.3, 199.5);
+            sleep(1000);
+            gyroStrafe(.3, 24, 199.5);
+            sleep(1000);
+            //   robot.spinner.setPower(.3);
+
+            sleep(4500);
+
+            //   robot.spinner.setPower(0);
+
+
+            gyroStrafe(.3, -30, 180);
+
+            gyroTurn(.3, -40);
+
+            gyroDrive(.3, 18, -40);
+
+            //robot.grabber.setPosition(.35);
+
+            sleep(1000);
+
+            gyroDrive(.5, -15, -40);
+
+            gyroTurn(.3, -95);
+
+            // gyroDrive (.4, 85, -95);
+
+*/
         }
+
+
+        if (x == 2) {
+            telemetry.addData(">", "Center");
+            telemetry.update();
+            //duck is on middle and place block on middle
+            //robot.grabber.setPosition(0);
+/*
+            sleep(750);
+
+
+            lift(.2, 3);
+
+            gyroDrive(.3, 13, 0);
+            sleep(1000);
+
+            gyroTurn(.3, 199.5);
+            sleep(1000);
+            gyroStrafe(.3, 24, 199.5);
+            sleep(1000);
+            //    robot.spinner.setPower(.3);
+
+            sleep(4500);
+
+            //     robot.spinner.setPower(0);
+
+
+            gyroStrafe(.3, -30, 180);
+
+            gyroTurn(.3, -40);
+            lift(.2, 6);
+            gyroDrive(.3, 18, -40);
+
+            //robot.grabber.setPosition(.35);
+
+            sleep(1000);
+
+            gyroDrive(.5, -15, -40);
+
+            gyroTurn(.3, -95);
+
+            // gyroDrive (.4, 85, -95);
+*/
+        }
+
+
+        if (x == 3) {
+            telemetry.addData(">", "Right");
+            telemetry.update();
+            //duck is on right and place block on top
+
+            //robot.grabber.setPosition(0);
+/*
+            sleep(750);
+
+            lift(.2, 3);
+
+
+            gyroDrive(.3, 13, 0);
+            sleep(1000);
+
+            gyroTurn(.3, 199.5);
+            sleep(1000);
+            gyroStrafe(.3, 24, 199.5);
+            sleep(1000);
+            //   robot.spinner.setPower(.3);
+
+            sleep(4500);
+
+            //    robot.spinner.setPower(0);
+
+
+            gyroStrafe(.3, -30, 180);
+
+            gyroTurn(.3, -40);
+            lift(.2, 9);
+            gyroDrive(.3, 18, -40);
+
+            //robot.grabber.setPosition(.35);
+
+            sleep(1000);
+
+            gyroDrive(.5, -15, -40);
+
+            gyroTurn(.3, -95);
+
+            //  gyroDrive (.4, 85, -95);
+
+*/
+        }
+
+
     }
+
+
+
 
 public double getError(double targetAngle) {
 
@@ -790,10 +738,11 @@ public void gyroDrive ( double speed,  double distance,  double angle) {
        tfodParameters.isModelTensorFlow2 = true;
        tfodParameters.inputSize = 320;
        tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
-       tfod.loadModelFromFile("/sdcard/FIRST/tflitemodels/myCustomFreightFrenzyModel.tflite", LABELS);
+        tfod.loadModelFromAsset(TFOD_MODEL_ASSET, LABELS);
+
     }
 
-   
+
 
 
 
