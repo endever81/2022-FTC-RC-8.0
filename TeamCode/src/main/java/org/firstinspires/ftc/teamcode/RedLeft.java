@@ -228,12 +228,16 @@ public class RedLeft extends LinearOpMode{
             telemetry.addData(">", "Did not See");
             telemetry.update();
 
-            robot.grabber.setPosition(.2);
+            robot.grabber.setPosition(0);
 
             sleep(750);
 
-            lift(.2, 2);
-            gyroStrafe(.5, -25, 0);
+           // lift(.2, 2);
+            robot.lift.setPower(.5);
+            sleep(500);
+            robot.lift.setPower(.0);
+
+            gyroDrive(.5, -18, 0);
 
         }
 
