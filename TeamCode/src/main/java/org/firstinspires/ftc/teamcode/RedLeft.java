@@ -1,38 +1,25 @@
 package org.firstinspires.ftc.teamcode;
 
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.robotcore.util.Range;
-import org.firstinspires.ftc.robotcore.external.android.util.Size;
-import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
-import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import java.util.Locale;
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.hardware.ColorSensor;
-import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.Range;
+
+import org.firstinspires.ftc.robotcore.external.ClassFactory;
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
+import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
+import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
+
 import java.util.List;
-import org.firstinspires.ftc.robotcore.external.ClassFactory;
-import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
-import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
-import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
-import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
-import org.firstinspires.ftc.robotcore.external.ClassFactory;
 
 @Autonomous(name = "Red Left", group = "Automonous")
 
@@ -140,9 +127,7 @@ public class RedLeft extends LinearOpMode{
 
         waitForStart();
 
-
-//release pressure on the wheel
-//servoWobble.setPosition(.7);
+        //Identify which signal is being displayed.
 
         int x = 0;
         if (opModeIsActive()) {
@@ -182,138 +167,75 @@ public class RedLeft extends LinearOpMode{
         if (x == 1) {
             telemetry.addData(">", "Left");
             telemetry.update();
-            //duck is on left and place block on bottom
+            //Position 1 - LEFT
 
-            //robot.grabber.setPosition(0);
-/*
+            robot.grabber.setPosition(.2);
+
             sleep(750);
 
-            lift(.2, 5);
-
-
-            gyroDrive(.3, 13, 0);
-            sleep(1000);
-
-            gyroTurn(.3, 199.5);
-            sleep(1000);
-            gyroStrafe(.3, 24, 199.5);
-            sleep(1000);
-            //   robot.spinner.setPower(.3);
-
-            sleep(4500);
-
-            //   robot.spinner.setPower(0);
-
-
-            gyroStrafe(.3, -30, 180);
-
-            gyroTurn(.3, -40);
-
-            gyroDrive(.3, 18, -40);
-
-            //robot.grabber.setPosition(.35);
+            lift(.2, 2);
+            gyroStrafe(.5, -20, 0);
+            gyroDrive(.3, 25, 0);
 
             sleep(1000);
 
-            gyroDrive(.5, -15, -40);
+            //gyroTurn(.3, 199.5);
 
-            gyroTurn(.3, -95);
 
-            // gyroDrive (.4, 85, -95);
-
-*/
         }
 
 
         if (x == 2) {
             telemetry.addData(">", "Center");
             telemetry.update();
-            //duck is on middle and place block on middle
-            //robot.grabber.setPosition(0);
-/*
+            //Position 2 - MIDDLE
+
+            robot.grabber.setPosition(.2);
+
             sleep(750);
 
-
-            lift(.2, 3);
-
-            gyroDrive(.3, 13, 0);
-            sleep(1000);
-
-            gyroTurn(.3, 199.5);
-            sleep(1000);
-            gyroStrafe(.3, 24, 199.5);
-            sleep(1000);
-            //    robot.spinner.setPower(.3);
-
-            sleep(4500);
-
-            //     robot.spinner.setPower(0);
-
-
-            gyroStrafe(.3, -30, 180);
-
-            gyroTurn(.3, -40);
-            lift(.2, 6);
-            gyroDrive(.3, 18, -40);
-
-            //robot.grabber.setPosition(.35);
+            lift(.2, 2);
+            gyroDrive(.3, 25, 0);
 
             sleep(1000);
 
-            gyroDrive(.5, -15, -40);
+            //gyroTurn(.3, 199.5);
 
-            gyroTurn(.3, -95);
 
-            // gyroDrive (.4, 85, -95);
-*/
+
         }
 
 
         if (x == 3) {
             telemetry.addData(">", "Right");
             telemetry.update();
-            //duck is on right and place block on top
+            //Position 3 - RIGHT
 
-            //robot.grabber.setPosition(0);
-/*
+            robot.grabber.setPosition(.2);
+
             sleep(750);
 
-            lift(.2, 3);
-
-
-            gyroDrive(.3, 13, 0);
-            sleep(1000);
-
-            gyroTurn(.3, 199.5);
-            sleep(1000);
-            gyroStrafe(.3, 24, 199.5);
-            sleep(1000);
-            //   robot.spinner.setPower(.3);
-
-            sleep(4500);
-
-            //    robot.spinner.setPower(0);
-
-
-            gyroStrafe(.3, -30, 180);
-
-            gyroTurn(.3, -40);
-            lift(.2, 9);
-            gyroDrive(.3, 18, -40);
-
-            //robot.grabber.setPosition(.35);
+            lift(.2, 2);
+            gyroStrafe(.5, 20, 0);
+            gyroDrive(.3, 25, 0);
 
             sleep(1000);
 
-            gyroDrive(.5, -15, -40);
+            //gyroTurn(.3, 199.5);
 
-            gyroTurn(.3, -95);
-
-            //  gyroDrive (.4, 85, -95);
-
-*/
         }
+        if (x == 0) {
+            telemetry.addData(">", "Did not See");
+            telemetry.update();
 
+            robot.grabber.setPosition(.2);
+
+            sleep(750);
+
+            lift(.2, 2);
+            gyroStrafe(.5, -25, 0);
+
+        }
 
     }
 
@@ -794,24 +716,24 @@ public class RedLeft extends LinearOpMode{
 
         if (opModeIsActive()) {
 
-            //   newLiftTarget = robot.arm.getCurrentPosition() + (int) (inches * (1140/(3.5 * 3.1415)));
+            newLiftTarget = robot.lift.getCurrentPosition() + (int) (inches * (1140 / (3.5 * 3.1415)));
 
-            //  robot.arm.setTargetPosition(newLiftTarget);
+            robot.lift.setTargetPosition(newLiftTarget);
 
-            //   robot.arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             runtime.reset();
-            //   robot.arm.setPower(Math.abs(power));
+            robot.lift.setPower(Math.abs(power));
 
-            while (opModeIsActive() &&
-                    //               robot.arm.isBusy()) {
-                    //   telemetry.addData("Lift", "Running at %7d",
-                    //                   robot.arm.getCurrentPosition());
-                    telemetry.update());
+            while (opModeIsActive() && robot.lift.isBusy()) {
+                telemetry.addData("Lift", "Running at %7d",
+                        robot.lift.getCurrentPosition());
+                telemetry.update();
 
+            }
+            robot.lift.setPower(0);
+            robot.lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         }
-        //  robot.arm.setPower(0);
-        //  robot.arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
     }
 
