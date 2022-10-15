@@ -34,8 +34,8 @@ import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 
-@Autonomous(name = "AutoRed1", group = "Automonous")
-
+//@Autonomous(name = "AutoRed1", group = "Automonous")
+@Disabled
 public class AutoRed1 extends LinearOpMode{
 
     private static final String TFOD_MODEL_ASSET = "PowerPlay.tflite";
