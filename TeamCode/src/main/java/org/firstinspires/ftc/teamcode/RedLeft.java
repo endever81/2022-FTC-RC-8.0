@@ -167,14 +167,30 @@ public class RedLeft extends LinearOpMode{
         if (x == 1) {
             telemetry.addData(">", "Left");
             telemetry.update();
+            sleep(500);
             //Position 1 - LEFT
 
             robot.grabber.setPosition(.2);
 
             sleep(750);
 
-            lift(.2, 2);
-            gyroStrafe(.5, -20, 0);
+            //lift(.2, 2);
+            robot.lift.setPower(.4);
+            sleep (1000);
+            robot.lift.setPower(0);
+
+            gyroDrive(.5, 3, 0);
+
+            gyroStrafe(.4, -15, 0);
+
+            gyroTurn(.5, 0);
+
+            gyroStrafe(.4, -15, 0);
+            gyroTurn(.5, 0);
+
+            gyroStrafe(.4, -15, 0);
+
+            gyroTurn(.5, 0);
             gyroDrive(.3, 25, 0);
 
             sleep(1000);
@@ -188,13 +204,18 @@ public class RedLeft extends LinearOpMode{
         if (x == 2) {
             telemetry.addData(">", "Center");
             telemetry.update();
+            sleep(1000);
             //Position 2 - MIDDLE
 
             robot.grabber.setPosition(.2);
 
             sleep(750);
 
-            lift(.2, 2);
+            //lift(.2, 2);
+            robot.lift.setPower(.4);
+            sleep (500);
+            robot.lift.setPower(0);
+
             gyroDrive(.3, 25, 0);
 
             sleep(1000);
@@ -209,14 +230,23 @@ public class RedLeft extends LinearOpMode{
         if (x == 3) {
             telemetry.addData(">", "Right");
             telemetry.update();
+            sleep(1000);
             //Position 3 - RIGHT
 
             robot.grabber.setPosition(.2);
 
             sleep(750);
 
-            lift(.2, 2);
-            gyroStrafe(.5, 20, 0);
+            //lift(.2, 2);
+            robot.lift.setPower(.4);
+            sleep (1000);
+            robot.lift.setPower(0);
+
+            gyroDrive(.5, 2, 0);
+            gyroTurn(.5, -90);
+            gyroDrive(.5, 18, -90);
+
+            gyroTurn(.5,0);
             gyroDrive(.3, 25, 0);
 
             sleep(1000);
@@ -232,8 +262,26 @@ public class RedLeft extends LinearOpMode{
 
             sleep(750);
 
-            lift(.2, 2);
-            gyroStrafe(.5, -25, 0);
+
+            //lift(.2, 2);
+            robot.lift.setPower(.5);
+            sleep (1000);
+            robot.lift.setPower(0);
+
+            gyroDrive(.5, 3, 0);
+
+            gyroStrafe(.4, -10, 0);
+
+            gyroTurn(.5, 0);
+
+            gyroStrafe(.4, -15, 0);
+
+            gyroTurn(.5, 0);
+
+            gyroStrafe(.4, -15, 0);
+
+            gyroTurn(.5, 0);
+
 
         }
 
