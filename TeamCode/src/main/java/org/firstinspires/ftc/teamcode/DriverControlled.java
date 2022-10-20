@@ -82,6 +82,19 @@ double grabberposition = 0;
     if (gamepad2.right_bumper){
     motorspinner = -.6;
     }
+
+        double rightintakepower = 0;
+        double leftintakepower = 0;
+
+        if(gamepad2.a){
+            leftintakepower = -1;
+            rightintakepower = 1;
+        }
+
+        if(gamepad2.b){
+            leftintakepower = 1;
+            rightintakepower = -1;
+        }
    
    double liftPower = gamepad2.left_stick_y;
    
@@ -95,8 +108,8 @@ double grabberposition = 0;
     robot.lift.setPower(liftPower);
     robot.grabber.setPosition(grabberposition);
     //robot.spinner.setPower(motorspinner);
-   // robot.rightintake.setPower(servoRightPower);
-   // robot.leftintake.setPower(servoLeftPower);
+        robot.leftintake.setPower(leftintakepower);
+        robot.rightintake.setPower(rightintakepower);
     
 }
 

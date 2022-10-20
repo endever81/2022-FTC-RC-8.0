@@ -81,12 +81,27 @@ double grabberPosition = 0;
     liftPower = -1;
     }
 
+    double rightintakepower = 0;
+    double leftintakepower = 0;
+
+    if(gamepad2.a){
+            leftintakepower = 1;
+            rightintakepower =-1;
+        }
+
+        if(gamepad2.b){
+            leftintakepower = -1;
+            rightintakepower = 1;
+        }
+
     robot.leftFrontDrive.setPower(front_left);
     robot.rightFrontDrive.setPower(front_right);
     robot.leftRearDrive.setPower(rear_left);
     robot.rightRearDrive.setPower(rear_right);
     robot.lift.setPower(liftPower);
     robot.grabber.setPosition(grabberPosition);
+    robot.leftintake.setPower(leftintakepower);
+    robot.rightintake.setPower(rightintakepower);
 
     
 }
