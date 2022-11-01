@@ -14,12 +14,14 @@ public class HardwareRobot {
     public DcMotor rightFrontDrive = null;
     public DcMotor leftRearDrive = null;
     public DcMotor rightRearDrive = null;
-    public DcMotor arm = null;
-    public DcMotor spinner = null;
+    public DcMotor lift = null;
+   // public DcMotor spinner = null;
     public CRServo leftintake = null;
     public CRServo rightintake = null;
-    
-    
+    public Servo claw;
+    public Servo rotator;
+
+
     //public Servo grabber = null;
 
     HardwareMap hwMap = null;
@@ -32,33 +34,35 @@ public class HardwareRobot {
     public void init(HardwareMap ahwMap){
         hwMap = ahwMap; //saves a reference Hardware Map
        
-        leftFrontDrive = hwMap.get(DcMotor.class, "motor_front_left");
-        rightFrontDrive = hwMap.get(DcMotor.class, "motor_front_right");
-        leftRearDrive = hwMap.get(DcMotor.class, "motor_rear_left");
-        rightRearDrive = hwMap.get(DcMotor.class, "motor_rear_right");
-        arm = hwMap.get(DcMotor.class, "motor_arm");
-        spinner = hwMap.get(DcMotor.class, "motor_spinner");
+        leftFrontDrive = hwMap.get(DcMotor.class, "motor_left_front");
+        rightFrontDrive = hwMap.get(DcMotor.class, "motor_right_front");
+        leftRearDrive = hwMap.get(DcMotor.class, "motor_left_rear");
+        rightRearDrive = hwMap.get(DcMotor.class, "motor_right_rear");
+        lift = hwMap.get(DcMotor.class, "lift_motor");
+        //spinner = hwMap.get(DcMotor.class, "motor_spinner");
        
-       leftintake = hwMap.get(CRServo.class, "left_intake");
-       rightintake = hwMap.get(CRServo.class, "right_intake");
-        //grabber = hwMap.get(Servo.class, "servo_grabber");
-        
+       //leftintake = hwMap.get(CRServo.class, "left_intake");
+       //rightintake = hwMap.get(CRServo.class, "right_intake");
+       claw = hwMap.get(Servo.class, "servo_claw");
+       rotator = hwMap.get(Servo.class, "servo_rotator");
+
         leftFrontDrive.setDirection(DcMotor.Direction.REVERSE);
         rightFrontDrive.setDirection(DcMotor.Direction.FORWARD);
         leftRearDrive.setDirection(DcMotor.Direction.REVERSE);
         rightRearDrive.setDirection(DcMotor.Direction.FORWARD);
         
-        arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
               
        
         leftFrontDrive.setPower(0);
         rightFrontDrive.setPower(0);
         leftRearDrive.setPower(0);
         rightRearDrive.setPower(0);
-        spinner.setPower(0);
-        //grabber.setPosition(.45);
-        leftintake.setPower(0);
-        rightintake.setPower(0);
+        //spinner.setPower(0);
+        claw.setPosition(0);
+        rotator.setPosition(0);
+        //leftintake.setPower(0);
+        //rightintake.setPower(0);
     }
 
 }
