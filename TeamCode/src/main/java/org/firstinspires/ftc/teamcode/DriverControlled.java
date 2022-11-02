@@ -73,40 +73,34 @@ public void runOpMode() {
     servoRightPower = -1;
     servoLeftPower = 1;
     }
-    
-    if (gamepad2.b){
-    servoRightPower = 1;
-    servoLeftPower = -1;
+        double rotatorPosition = .5;
+    if (gamepad2.b) {
+         rotatorPosition = .1;
     }
-    
-    
-   double motorspinner = 0;
-   
- if (gamepad2.left_bumper){
-    motorspinner = .6;
-    }
-    
-    if (gamepad2.right_bumper){
-    motorspinner = -.6;
-    }
-   
-   double armPower = gamepad2.left_stick_y;
-   
-   
-   
 
-    robot.leftFrontDrive.setPower(front_left);
-    robot.rightFrontDrive.setPower(front_right);
-    robot.leftRearDrive.setPower(rear_left);
-    robot.rightRearDrive.setPower(rear_right);
-    robot.lift.setPower(armPower);
-    robot.claw.setPosition(0);
-    robot.rotator.setPosition(0);
-    //robot.spinner.setPower(motorspinner);
-    //robot.rightintake.setPower(servoRightPower);
-    //robot.leftintake.setPower(servoLeftPower);
+        double clawPosition = .5;
 
-}
+        if (gamepad2.a) {
+            clawPosition = 0;
+        }
+
+
+        double liftPower = gamepad2.left_stick_y;
+
+
+        robot.leftFrontDrive.setPower(front_left);
+        robot.rightFrontDrive.setPower(front_right);
+        robot.leftRearDrive.setPower(rear_left);
+        robot.rightRearDrive.setPower(rear_right);
+        robot.lift.setPower(liftPower);
+        robot.claw.setPosition(clawPosition);
+        robot.rotator.setPosition(rotatorPosition);
+        //robot.spinner.setPower(motorspinner);
+        //robot.rightintake.setPower(servoRightPower);
+        //robot.leftintake.setPower(servoLeftPower);
+
+    }
+
 
 }
 

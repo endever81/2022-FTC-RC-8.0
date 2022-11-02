@@ -16,8 +16,8 @@ public class HardwareRobot {
     public DcMotor rightRearDrive = null;
     public DcMotor lift = null;
    // public DcMotor spinner = null;
-    public CRServo leftintake = null;
-    public CRServo rightintake = null;
+   // public CRServo leftintake = null;
+   // public CRServo rightintake = null;
     public Servo claw;
     public Servo rotator;
 
@@ -43,14 +43,14 @@ public class HardwareRobot {
        
        //leftintake = hwMap.get(CRServo.class, "left_intake");
        //rightintake = hwMap.get(CRServo.class, "right_intake");
-       claw = hwMap.get(Servo.class, "servo_claw");
-       rotator = hwMap.get(Servo.class, "servo_rotator");
+       claw = hwMap.get(Servo.class, "claw_servo");
+       rotator = hwMap.get(Servo.class, "rotator_servo");
 
         leftFrontDrive.setDirection(DcMotor.Direction.REVERSE);
         rightFrontDrive.setDirection(DcMotor.Direction.FORWARD);
         leftRearDrive.setDirection(DcMotor.Direction.REVERSE);
         rightRearDrive.setDirection(DcMotor.Direction.FORWARD);
-        
+        //rotator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
               
        
