@@ -52,15 +52,15 @@ public class HardwareRobot {
         rightRearDrive.setDirection(DcMotor.Direction.FORWARD);
         //rotator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-              
+
        
         leftFrontDrive.setPower(0);
         rightFrontDrive.setPower(0);
         leftRearDrive.setPower(0);
         rightRearDrive.setPower(0);
         //spinner.setPower(0);
-        claw.setPosition(0);
-        rotator.setPosition(0);
+        claw.setPosition(1);
+        rotator.setPosition(.4);
         //leftintake.setPower(0);
         //rightintake.setPower(0);
     }

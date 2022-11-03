@@ -73,15 +73,15 @@ public void runOpMode() {
     servoRightPower = -1;
     servoLeftPower = 1;
     }
-        double rotatorPosition = .5;
+        double rotatorPosition = 2;
     if (gamepad2.b) {
          rotatorPosition = .1;
     }
 
-        double clawPosition = .5;
+        double clawPosition = 1;
 
         if (gamepad2.a) {
-            clawPosition = 0;
+            clawPosition = .4;
         }
 
 
