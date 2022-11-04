@@ -60,7 +60,7 @@ public class HardwareRobot {
         rightRearDrive.setPower(0);
         //spinner.setPower(0);
         claw.setPosition(1);
-        rotator.setPosition(.4);
+        rotator.setPosition(.3);
         //leftintake.setPower(0);
         //rightintake.setPower(0);
     }
