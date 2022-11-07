@@ -73,7 +73,7 @@ public void runOpMode() {
     servoRightPower = -1;
     servoLeftPower = 1;
     }
-        double rotatorPosition = 2;
+        double rotatorPosition = 1;
     if (gamepad2.b) {
          rotatorPosition = .1;
     }
