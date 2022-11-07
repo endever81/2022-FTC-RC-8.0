@@ -89,9 +89,9 @@ public void runOpMode() {
 
 
         robot.leftFrontDrive.setPower(front_left);
-        robot.rightFrontDrive.setPower(front_right);
+        robot.rightFrontDrive.setPower(-front_right);
         robot.leftRearDrive.setPower(rear_left);
-        robot.rightRearDrive.setPower(rear_right);
+        robot.rightRearDrive.setPower(-rear_right);
         robot.lift.setPower(liftPower);
         robot.claw.setPosition(clawPosition);
         robot.rotator.setPosition(rotatorPosition);
