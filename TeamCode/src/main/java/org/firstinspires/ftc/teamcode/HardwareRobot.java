@@ -15,14 +15,9 @@ public class HardwareRobot {
     public DcMotor leftRearDrive = null;
     public DcMotor rightRearDrive = null;
     public DcMotor lift = null;
-   // public DcMotor spinner = null;
-   // public CRServo leftintake = null;
-   // public CRServo rightintake = null;
     public Servo claw;
     public Servo rotator;
 
-
-    //public Servo grabber = null;
 
     HardwareMap hwMap = null;
    
