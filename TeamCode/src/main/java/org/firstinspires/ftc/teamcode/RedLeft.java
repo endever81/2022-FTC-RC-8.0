@@ -168,7 +168,18 @@ public class RedLeft extends LinearOpMode{
             telemetry.addData(">", "Left");
             telemetry.update();
             //Position 1 - LEFT
-
+// drive forward 2 inches
+            //turn 45 degrees counter clockwise
+            //raise lift 6 inches
+            //drive 3 inches forward
+            //lower lift 6 inches
+            //drop item in grabber
+            //reverse 3 inches
+            //turn 45 degrees clockwise
+            //drive forward 6 inches
+            //turn 90 degrees counter clockwise
+            //drive forward 16 inches
+            //turn 90 degrees clockwise
             robot.grabber.setPosition(.2);
 
             sleep(750);
