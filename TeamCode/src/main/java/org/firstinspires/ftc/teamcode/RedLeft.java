@@ -168,18 +168,35 @@ public class RedLeft extends LinearOpMode{
             telemetry.addData(">", "Left");
             telemetry.update();
             //Position 1 - LEFT
-// drive forward 2 inches
-            //turn 45 degrees counter clockwise
-            //raise lift 6 inches
-            //drive 3 inches forward
-            //lower lift 6 inches
+            // drive forward 2 inches
+            gyroDrive(.5, 2, 0);
+            //turn 55 degrees counter clockwise
+            gyroTurn(.5, -55);
+            //raise lift 16 inches
+            lift(.5, 16);
+            //drive 8 inches forward
+            gyroDrive(5.,8,0);
+            //lower lift 16 inches
+            lift(.5,-16);
             //drop item in grabber
-            //reverse 3 inches
-            //turn 45 degrees clockwise
-            //drive forward 6 inches
+            robot.leftintake.setPower(1);
+            robot.rightintake.setPower(-1);
+            //reverse 6 inches
+            gyroDrive(.5,-6,0
+
+            robot.leftintake.setPower(0);
+            robot.rightintake.setPower(0);
+            //turn 55 degrees clockwise
+            gyroTurn(.5,55);
+            //drive forward 18 inches
+            gyroDrive(5.,18,0);
             //turn 90 degrees counter clockwise
-            //drive forward 16 inches
+            gyroTurn(.5,-90);
+            //drive forward 20 inches
+            gyroDrive(.5,20,0);
             //turn 90 degrees clockwise
+            gyroTurn(5.,90);
+
             robot.grabber.setPosition(.2);
 
             sleep(750);
