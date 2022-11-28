@@ -197,15 +197,16 @@ public class RedLeft extends LinearOpMode{
             //turn 90 degrees clockwise
             gyroTurn(5.,90);
 
-            robot.grabber.setPosition(.2);
+            //Old Code
+            //robot.grabber.setPosition(.2);
 
-            sleep(750);
+            //sleep(750);
 
-            lift(.2, 2);
-            gyroStrafe(.5, -20, 0);
-            gyroDrive(.3, 25, 0);
+            //lift(.2, 2);
+            //gyroStrafe(.5, -20, 0);
+            //gyroDrive(.3, 25, 0);
 
-            sleep(1000);
+            //sleep(1000);
 
             //gyroTurn(.3, 199.5);
 
