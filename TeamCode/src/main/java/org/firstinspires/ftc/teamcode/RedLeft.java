@@ -68,13 +68,16 @@ public class RedLeft extends LinearOpMode{
 
 
 
+
     @Override
     public void runOpMode() {
 
 
         robot.init(hardwareMap);
-
-
+        robot.leftFrontDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        robot.rightFrontDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        robot.leftRearDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        robot.rightRearDrive.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         initVuforia();
         initTfod();
 
@@ -82,7 +85,7 @@ public class RedLeft extends LinearOpMode{
         if (tfod != null) {
             tfod.activate();
 
-            tfod.setZoom(1.5, 10.0 / 9.0);
+            tfod.setZoom(2.5, 10.0 / 9.0);
         }
 
 
@@ -167,48 +170,34 @@ public class RedLeft extends LinearOpMode{
         if (x == 1) {
             telemetry.addData(">", "Left");
             telemetry.update();
+            sleep(500);
             //Position 1 - LEFT
+
             // drive forward 2 inches
             gyroDrive(.5, 2, 0);
             //turn 55 degrees counter clockwise
-            gyroTurn(.5, -55);
+            gyroTurn(.5, 49);
             //raise lift 16 inches
+
             lift(.5, 16);
             //drive 8 inches forward
-            gyroDrive(5.,8,0);
+            gyroDrive(5.,13,42);
             //lower lift 16 inches
             lift(.5,-16);
             //drop item in grabber
             robot.leftintake.setPower(1);
             robot.rightintake.setPower(-1);
             //reverse 6 inches
-            gyroDrive(.5,-6,0);
+            gyroDrive(.5,-11,42);
 
             robot.leftintake.setPower(0);
             robot.rightintake.setPower(0);
             //turn 55 degrees clockwise
-            gyroTurn(.5,55);
-            //drive forward 18 inches
-            gyroDrive(5.,18,0);
-            //turn 90 degrees counter clockwise
-            gyroTurn(.5,-90);
-            //drive forward 20 inches
-            gyroDrive(.5,20,0);
-            //turn 90 degrees clockwise
-            gyroTurn(5.,90);
 
-            //Old Code
-            //robot.grabber.setPosition(.2);
+            gyroTurn(.5,0);
+        gyroStrafe(.6,-20,0);
+            gyroDrive(5.,22,0);
 
-            //sleep(750);
-
-            //lift(.2, 2);
-            //gyroStrafe(.5, -20, 0);
-            //gyroDrive(.3, 25, 0);
-
-            //sleep(1000);
-
-            //gyroTurn(.3, 199.5);
 
 
         }
@@ -756,7 +745,7 @@ public class RedLeft extends LinearOpMode{
         int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
                 "tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
-        tfodParameters.minResultConfidence = 0.68f;
+        tfodParameters.minResultConfidence = 0.50f;
         tfodParameters.isModelTensorFlow2 = true;
         tfodParameters.inputSize = 320;
         tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
