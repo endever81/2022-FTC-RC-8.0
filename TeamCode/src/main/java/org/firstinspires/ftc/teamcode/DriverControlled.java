@@ -75,13 +75,13 @@ public void runOpMode() {
     }
         double rotatorPosition = 1;
     if (gamepad2.b) {
-         rotatorPosition = .1;
+         rotatorPosition = .4;
     }
 
         double clawPosition = 1;
 
         if (gamepad2.a) {
-            clawPosition = .4;
+            clawPosition = .1;
         }
 
 
@@ -89,9 +89,9 @@ public void runOpMode() {
 
 
         robot.leftFrontDrive.setPower(front_left);
-        robot.rightFrontDrive.setPower(-front_right);
+        robot.rightFrontDrive.setPower(front_right);
         robot.leftRearDrive.setPower(rear_left);
-        robot.rightRearDrive.setPower(-rear_right);
+        robot.rightRearDrive.setPower(rear_right);
         robot.lift.setPower(liftPower);
         robot.claw.setPosition(clawPosition);
         robot.rotator.setPosition(rotatorPosition);

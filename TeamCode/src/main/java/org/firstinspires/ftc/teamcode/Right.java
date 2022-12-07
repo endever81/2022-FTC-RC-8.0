@@ -24,7 +24,9 @@ import java.util.List;
 
 public class Right extends LinearOpMode{
 
-    private static final String TFOD_MODEL_ASSET = "PowerPlay.tflite";
+    //private static final String TFOD_MODEL_ASSET = "PowerPlay.tflite";
+    private static final String TFOD_MODEL_ASSET = "InitialModel22-23.tflite";    //custom model
+
     private static final String[] LABELS = {
             "1 Bolt",
             "2 Bulb",
@@ -170,17 +172,13 @@ public class Right extends LinearOpMode{
 
             robot.claw.setPosition(.4);  //close claw
 
-            gyroDrive(.5, 40, 0);  //Approach thrid tile in
-            gyroTurn(.5, 45); //turn toward high junction
-            lift(1, 25); // raise lift and hold position
-            gyroDrive(.4, 4, 45);  //approach high junction
+            gyroDrive(.5, 38, 0);
+            gyroTurn(.4, 35);
+            gyroDrive(.3, 2, 35);
+            //gyroStrafe(.5, -15, 0);
 
-            robot.claw.setPosition(1);  //open claw
-            lift(1, -25); // lower lift and hold position
+            gyroDrive(.4, 20, 0);  //approach high junction
 
-            gyroDrive(.5, -6,45); // back off high jucntion
-            gyroTurn(.5, 0); //turn to 0 degress
-            gyroStrafe(.6, -20, 0); //strafe toward position 1
 
 
         }
@@ -197,16 +195,8 @@ public class Right extends LinearOpMode{
 
             robot.claw.setPosition(.4);  //close claw
 
-            gyroDrive(.5, 40, 0);  //Approach thrid tile in
-            gyroTurn(.5, 45); //turn toward high junction
-            lift(1, 25); // raise lift and hold position
-            gyroDrive(.4, 4, 45);  //approach high junction
 
-            robot.claw.setPosition(1);  //open claw
-            lift(1, -25); // lower lift and hold position
-
-            gyroDrive(.5, -6,45); // back off high jucntion
-            gyroTurn(.5, 0); //turn to 0 degress
+            gyroDrive(.4, 22, 0);  //approach high junction
 
 
         }
@@ -223,17 +213,10 @@ public class Right extends LinearOpMode{
 
             robot.claw.setPosition(.4);  //close claw
 
-            gyroDrive(.5, 40, 0);  //Approach thrid tile in
-            gyroTurn(.5, 45); //turn toward high junction
-            lift(1, 25); // raise lift and hold position
-            gyroDrive(.4, 4, 45);  //approach high junction
+            gyroDrive(.5, 2, 0);
+            gyroStrafe(.5, 15, 0);
 
-            robot.claw.setPosition(1);  //open claw
-            lift(1, -25); // lower lift and hold position
-
-            gyroDrive(.5, -60,45); // back off high jucntion
-            gyroTurn(.5, 0); //turn to 0 degress
-            gyroStrafe(.6, 20, 0); //strafe toward the wall
+            gyroDrive(.4, 20, 0);  //approach high junction
 
         }
 
@@ -247,17 +230,8 @@ public class Right extends LinearOpMode{
 
             robot.claw.setPosition(.4);  //close claw
 
-            gyroDrive(.5, 40, 0);  //Approach thrid tile in
-            gyroTurn(.5, -45); //turn toward high junction
-            lift(1, 25); // raise lift and hold position
-            gyroDrive(.4, 4, -45);  //approach high junction
+            gyroDrive(.5, 22, 0);  //Approach thrid tile in
 
-            robot.claw.setPosition(1);  //open claw
-            lift(1, -25); // lower lift and hold position
-
-            gyroDrive(.5, -60,-45); // back off high jucntion
-            gyroTurn(.5, 0); //turn to 0 degress
-            gyroStrafe(.6, -20, 0); //strafe toward the wall
 
 
         }
@@ -735,8 +709,7 @@ boolean onHeadingShoot(double speed, double angle, double PCoeff) {
 
    
 
-public void lift(double power, double inches)
-{
+public void lift(double power, double inches){
     int newLiftTarget;
     
     if (opModeIsActive()) {
@@ -761,7 +734,7 @@ public void lift(double power, double inches)
     }
    
 }
-    
+
 }
 
  
