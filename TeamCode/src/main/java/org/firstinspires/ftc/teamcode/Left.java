@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -21,9 +20,9 @@ import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 
 import java.util.List;
 
-@Autonomous(name = "Red Left", group = "Automonous")
+@Autonomous(name = "Left", group = "Automonous")
 
-public class RedLeft extends LinearOpMode{
+public class Left extends LinearOpMode{
 
     private static final String TFOD_MODEL_ASSET = "PowerPlay.tflite";
     private static final String[] LABELS = {
@@ -172,11 +171,11 @@ public class RedLeft extends LinearOpMode{
             telemetry.update();
             sleep(500);
             //Position 1 - LEFT
-
+gyroStrafe(.5,6,0);
             // drive forward 2 inches
-            gyroDrive(.5, 2, 0);
-            //turn 55 degrees counter clockwise
-            gyroTurn(.5, 49);
+            gyroDrive(.5, 15, 0);
+            //turn 55 degrees clockwise
+            gyroTurn(.5, 45);
             //raise lift 16 inches
 
             lift(.5, 16);
@@ -188,15 +187,15 @@ public class RedLeft extends LinearOpMode{
             robot.leftintake.setPower(1);
             robot.rightintake.setPower(-1);
             //reverse 6 inches
-            gyroDrive(.5,-11,42);
+            gyroDrive(.5,-11,35);
 
             robot.leftintake.setPower(0);
             robot.rightintake.setPower(0);
             //turn 55 degrees clockwise
 
             gyroTurn(.5,0);
-        gyroStrafe(.6,-20,0);
-            gyroDrive(5.,22,0);
+        gyroStrafe(.6,-32,0);
+            gyroDrive(5.,27,0);
 
 
 
@@ -206,39 +205,11 @@ public class RedLeft extends LinearOpMode{
         if (x == 2) {
             telemetry.addData(">", "Center");
             telemetry.update();
-            //Old Code
-            //Position 2 - MIDDLE
+            sleep(500);
 
-            //robot.grabber.setPosition(.2);
-
-            //sleep(750);
-
-            //lift(.2, 2);
-            //gyroDrive(.3, 25, 0);
-
-            //sleep(1000);
-
-            //New Code
-            gyroDrive(.5, 2, 0);
-            //turn 55 degrees counter clockwise
-            gyroTurn(.5, -55);
-            //raise lift 16 inches
-            lift(.5, 16);
-            //drive 8 inches forward
-            gyroDrive(5.,8,0);
-            //lower lift 16 inches
-            lift(.5,-16);
-            //drop item in grabber
-            robot.leftintake.setPower(1);
-            robot.rightintake.setPower(-1);
-            //reverse 6 inches
-            gyroDrive(.5,-6,0);
-
-            robot.leftintake.setPower(0);
-            robot.rightintake.setPower(0);
-            //turn 55 degrees clockwise
-            gyroTurn(.5,55);
-            gyroDrive(.5,25,0);
+            gyroStrafe(.6, -10, 0);
+            gyroDrive(.5, 60, 0);
+            gyroTurn(.5, 45);
 
 
         }
@@ -247,82 +218,64 @@ public class RedLeft extends LinearOpMode{
         if (x == 3) {
             telemetry.addData(">", "Right");
             telemetry.update();
-            //Old Code
-            //Position 3 - RIGHT
+            sleep(500);
+            //Position 1 - LEFT
 
-            //robot.grabber.setPosition(.2);
-
-            //sleep(750);
-
-            //lift(.2, 2);
-            //gyroStrafe(.5, 20, 0);
-            //gyroDrive(.3, 25, 0);
-
-            //sleep(1000);
-
-            //gyroTurn(.3, 199.5);
-            gyroDrive(.5, 2, 0);
-            //turn 55 degrees counter clockwise
-            gyroTurn(.5, -55);
+            // drive forward 2 inches
+            gyroDrive(.5, 3, 0);
+            //turn 55 degrees clockwise
+            gyroTurn(.5, -45);
             //raise lift 16 inches
+
             lift(.5, 16);
             //drive 8 inches forward
-            gyroDrive(5.,8,0);
+            gyroDrive(5.,13,42);
             //lower lift 16 inches
             lift(.5,-16);
             //drop item in grabber
             robot.leftintake.setPower(1);
             robot.rightintake.setPower(-1);
             //reverse 6 inches
-            gyroDrive(.5,-6,0);
+            gyroDrive(.5,-11,35);
 
             robot.leftintake.setPower(0);
             robot.rightintake.setPower(0);
             //turn 55 degrees clockwise
-            gyroTurn(.5,55);
-            gyroDrive(.5,16,0);
-            gyroTurn(.5,90);
-            gyroDrive(.5,20,0);
-            gyroTurn(.5,-90);
-            gyroDrive(.5,6,0);
+
+            gyroTurn(.5,0);
+            gyroStrafe(.6,32,0);
+            gyroDrive(5.,27,0);
         }
         if (x == 0) {
             telemetry.addData(">", "Did not See");
             telemetry.update();
-            sleep(1000);
-            //New Code
+            sleep(500);
+            //Position 1 - LEFT
 
             // drive forward 2 inches
-            gyroDrive(.5, 2, 0);
-            //turn 55 degrees counter clockwise
-            gyroTurn(.5, 40);
+            gyroDrive(.5, 3, 0);
+            //turn 55 degrees clockwise
+            gyroTurn(.5, -45);
             //raise lift 16 inches
 
             lift(.5, 16);
             //drive 8 inches forward
-            gyroDrive(5.,11,42);
+            gyroDrive(5.,13,42);
             //lower lift 16 inches
             lift(.5,-16);
             //drop item in grabber
             robot.leftintake.setPower(1);
             robot.rightintake.setPower(-1);
             //reverse 6 inches
-            gyroDrive(.5,-11,42);
+            gyroDrive(.5,-11,35);
 
             robot.leftintake.setPower(0);
             robot.rightintake.setPower(0);
             //turn 55 degrees clockwise
-            sleep(500);
-            gyroTurn(.5,-42);
-            //drive forward 18 inches
-            sleep(200);
-            gyroDrive(5.,22,0);
-            //turn 90 degrees counter clockwise
-            gyroTurn(.5,-90);
-            //drive forward 20 inches
-            gyroDrive(.5,20,-90);
-            //turn 90 degrees clockwise
-            gyroTurn(5.,90);
+
+            gyroTurn(.5,0);
+            gyroStrafe(.6,-32,0);
+            gyroDrive(5.,27,0);
 
         }
 
