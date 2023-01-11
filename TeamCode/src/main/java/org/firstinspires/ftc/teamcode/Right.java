@@ -179,7 +179,7 @@ public class Right extends LinearOpMode{
             gyroTurn(.5, 49);
             //raise lift 16 inches
 
-            lift(.5, 16);
+            lift(.5, 30);
             //drive 8 inches forward
             gyroDrive(5.,13,42);
             //lower lift 16 inches
@@ -208,6 +208,23 @@ public class Right extends LinearOpMode{
             telemetry.update();
             sleep(500);
 
+            gyroDrive(.5,2,0);
+            gyroStrafe(.5,-30,0);
+            gyroDrive(.5,33,0);
+            gyroTurn(.5,-49);
+            lift(.5,27);
+            gyroDrive(.5,4,0);
+            lift(.5,-5);
+            robot.leftintake.setPower(1);
+            robot.rightintake.setPower(-1);
+            sleep(1000);
+            gyroDrive(.5,-4,0);
+            lift(.5,-15);
+            gyroTurn(.5,49);
+            gyroDrive(.5,-5,0);
+            gyroStrafe(.5,30,0);
+
+
 
 
         }
@@ -218,16 +235,22 @@ public class Right extends LinearOpMode{
             telemetry.update();
             sleep(500);
 
-            lift(.5,2);
+            gyroDrive(.5,2,0);
             gyroStrafe(.6, -30, 0);
-            gyroDrive(.5, 57, 0);
-            gyroTurn(.5, -49);
-            lift(.5,28.5);
+            gyroDrive(.5, 55, 0);
+            gyroTurn(.5, -46);
+            lift(.5,45);
             gyroDrive(.5,4,0);
             lift(.5,-4);
             robot.leftintake.setPower(1);
             robot.rightintake.setPower(-1);
-            gyroTurn(.5,4);
+            sleep(500);
+            lift(.5,-45);
+
+            gyroTurn(.5,46);
+            gyroDrive(.5,-4,0);
+            gyroTurn(.5,90);
+            gyroDrive(.5,25,0);
 
         }
         if (x == 0) {

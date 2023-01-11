@@ -227,11 +227,11 @@ gyroStrafe(.5,6,0);
             gyroTurn(.5, -45);
             //raise lift 16 inches
 
-            lift(.5, 16);
+            lift(.5, 30);
             //drive 8 inches forward
             gyroDrive(5.,13,42);
             //lower lift 16 inches
-            lift(.5,-16);
+            lift(.5,-30);
             //drop item in grabber
             robot.leftintake.setPower(1);
             robot.rightintake.setPower(-1);
