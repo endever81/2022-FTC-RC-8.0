@@ -87,8 +87,7 @@ public class Right extends LinearOpMode{
         if (tfod != null) {
             tfod.activate();
 
-            tfod.setZoom(2.5, 10.0 / 9.0);
-        }
+            tfod.setZoom(1.5, 10.0 / 9.0);        }
 
 
         //IMU Initialization
