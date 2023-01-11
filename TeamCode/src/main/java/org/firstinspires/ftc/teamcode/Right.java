@@ -25,7 +25,9 @@ import java.util.List;
 
 public class Right extends LinearOpMode{
 
-    private static final String TFOD_MODEL_ASSET = "PowerPlay.tflite";
+    //private static final String TFOD_MODEL_ASSET = "PowerPlay.tflite";
+    private static final String TFOD_MODEL_ASSET = "InitialModel22-23.tflite";
+
     private static final String[] LABELS = {
             "1 Bolt",
             "2 Bulb",
